@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Личный кабинет GravitLauncher';
 ?>
 <div class="site-index">
 
