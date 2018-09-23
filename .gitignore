@@ -23,7 +23,6 @@ Thumbs.db
 # composer itself is not needed
 composer.phar
 composer.lock
-composer.json
 backend/web/pma
 backend/web/pga
 init
