@@ -21,11 +21,13 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  */
+
+
+
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
-    const STATUS_BANNED = 9;
 
 
     /**
@@ -33,7 +35,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%users}}';
     }
 
     /**
@@ -70,7 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['rest_token' => $token, 'status' => self::STATUS_ACTIVE]);
+        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
     /**
@@ -178,14 +180,6 @@ class User extends ActiveRecord implements IdentityInterface
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
-    }
-    
-    /**
-     * Generates new rest token
-     */
-    public function generateRestToken()
-    {
-        $this->rest_token = Yii::$app->security->generateRandomString();
     }
 
     /**
