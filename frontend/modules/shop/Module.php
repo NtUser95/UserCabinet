@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\modules\minecraft;
+namespace app\modules\shop;
 
 /**
- * minecraft module definition class
+ * shop module definition class
  */
-class module extends \yii\base\Module
+class Module extends \yii\base\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'app\modules\minecraft\controllers';
+    public $controllerNamespace = 'app\modules\shop\controllers';
 
     /**
      * {@inheritdoc}

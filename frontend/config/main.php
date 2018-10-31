@@ -11,9 +11,18 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'usercp' => [
+            'class' => 'app\modules\usercp\Module',
+        ],
+        'shop' => [
+            'class' => 'app\modules\shop\Module',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'baseUrl' => '',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -36,14 +45,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'home' => 'site/index',
+                'about-us' => 'site/about',
+                'contact-us' => 'site/contact',
+                'usercp/index' => 'usercp/default/index',
+                'usercp/render' => 'usercp/default/render',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

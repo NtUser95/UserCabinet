@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\minecraft\controllers;
+namespace app\modules\shop\controllers;
 
 use yii\web\Controller;
 
 /**
- * Default controller for the `minecraft` module
+ * Default controller for the `shop` module
  */
 class DefaultController extends Controller
 {

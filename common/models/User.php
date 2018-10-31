@@ -21,6 +21,9 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  */
+
+
+
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
@@ -33,7 +36,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%users}}';
     }
 
     /**
@@ -179,14 +182,6 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
-    
-    /**
-     * Generates new rest token
-     */
-    public function generateRestToken()
-    {
-        $this->rest_token = Yii::$app->security->generateRandomString();
-    }
 
     /**
      * Removes password reset token
@@ -194,5 +189,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+        /**
+     * Generates new rest token
+     */
+    public function generateRestToken()
+    {
+        $this->rest_token = Yii::$app->security->generateRandomString();
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -10,10 +9,9 @@ $this->title = $model->username;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="user-view">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= \Yii::$app->user->can('updateUser') ? Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) : "" ?>
         <?= \Yii::$app->user->can('deleteUser') ? Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -24,7 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) : "" ?>
     </p>
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -38,5 +35,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'serverID',
         ],
     ]) ?>
-
 </div>

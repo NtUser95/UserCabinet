@@ -1,8 +1,6 @@
 <?php
-
 namespace common\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\User;
@@ -22,7 +20,6 @@ class UserSearch extends User
             [['username', 'auth_key', 'password_hash', 'password_reset_token', 'rest_token', 'email', 'uuid', 'accessToken', 'serverID'], 'safe'],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -31,7 +28,6 @@ class UserSearch extends User
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
-
     /**
      * Creates data provider instance with search query applied
      *
@@ -42,21 +38,16 @@ class UserSearch extends User
     public function search($params)
     {
         $query = User::find();
-
         // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
         $this->load($params);
-
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
-
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -64,7 +55,6 @@ class UserSearch extends User
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
-
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key])
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
@@ -74,7 +64,6 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'uuid', $this->uuid])
             ->andFilterWhere(['like', 'accessToken', $this->accessToken])
             ->andFilterWhere(['like', 'serverID', $this->serverID]);
-
         return $dataProvider;
     }
 }
